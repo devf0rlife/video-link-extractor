@@ -37,7 +37,7 @@ def main():
     video_url = extract_video_url(html_content)
 
     if video_url:
-        print("Video URL:", video_url)
+        print(video_url)
     else:
         print("No video URL found")
 
