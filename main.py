@@ -41,9 +41,10 @@ def main():
     url = args.url
     parsed_url = urlparse(url)
     domain = parsed_url.netloc
+    domain = domain.lstrip("www.")
     html_content = fetch_with_wget(url)
 
-    if domain == "nudetab.com":
+    if domain in ["nudetab.com", "kamababa.desi"]:
         video_url = []
         link = extract_video_url(html_content)
         thumb = extract_thumb_url(html_content)
@@ -51,6 +52,11 @@ def main():
         video_url.append(thumb)
     else:
         video_url = extract_video_url(html_content)
+        # video_url = []
+        # link = extract_video_url(html_content)
+        # thumb = extract_thumb_url(html_content)
+        # video_url.append(link)
+        # video_url.append(thumb)
 
     if video_url:
         print(video_url)
